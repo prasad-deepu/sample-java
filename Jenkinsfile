@@ -37,12 +37,12 @@ pipeline{
                     // git commit -m "incremented patch version by 1"   
                     withCredentials([usernamePassword(credentialsId: 'gitcred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                     sh""" 
-                    git checkout -b new9
+                    git checkout -b new10
                     mvn org.codehaus.mojo:versions-maven-plugin:2.15.0:set -DnewVersion="${newpom}" -DgenerateBackupPoms=false
                     git status 
                     git add pom.xml                    
                     git status             
-                    git push "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/sample-java.git" new9
+                    git push "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/sample-java.git" new10
                     """    
                         }
                                   
