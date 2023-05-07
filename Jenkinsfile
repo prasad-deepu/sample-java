@@ -33,15 +33,15 @@ pipeline{
                     withCredentials([usernamePassword(credentialsId: 'gitcred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                     // sh 'git clone https://github.com/myusername/my-repo.git'
                     // git remote set-url origin https://prasad-deepu@github.com/prasad-deepu/sample-java.git 
-                     sh"""    
-                    git add pom.xml
-                    git commit -m "incremented patch version by 1"     
-                    git checkout master
+                     sh"""
+                    touch .gitignore
+                    echo "# Ignore everything\n*\n\n# Except for XML files\n!*.xml" > .gitignore     
+                    git checkout new2
                     git add pom.xml
                     git commit -m "incremented patch version by 1"  
                     git branch 
                     git remote -v                 
-                    git push "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/sample-java.git" master
+                    git push "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/sample-java.git" new2
                     """    
                         }
                                   
