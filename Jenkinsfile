@@ -29,11 +29,13 @@ pipeline{
                     def newpom = "${fixed}.${major}.${minor}.${ipatch}-${fxsnap}"
                     println "pomnewversion: ${newpom}"
                     sh (script: "mvn org.codehaus.mojo:versions-maven-plugin:2.15.0:set -DnewVersion=${newpom} -DgenerateBackupPoms=false")
-                    sh 'cat pom.xml'
-                    // sh"""
-                    // newpom="$versionArray[0].$versionArray[1].$versionArray[2].$versionArray[3]-$versionArray[4]"
-                    // echo $newpom
-                    // """
+                    sh"""
+                    cat pom.xml
+                    git add pom.xml
+                    git commit -m "incremented patch version by 1"
+                    git remote add origin git@github.com:prasad-deepu/sample-java.git
+                    git push origin master
+                    """                   
                 }
             }
         }
