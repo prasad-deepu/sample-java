@@ -41,7 +41,9 @@ pipeline{
                     git add pom.xml
                     git commit -m "incremented patch version by 1"  
                     git branch 
-                    git remote -v                 
+                    git add pom.xml
+                    git commit -m "incremented patch version by 1" 
+                    git status             
                     git push "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/sample-java.git" new2
                     """    
                         }
