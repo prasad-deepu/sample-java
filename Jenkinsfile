@@ -33,7 +33,7 @@ pipeline{
                     sh"""
                     git add pom.xml
                     git commit -m "incremented patch version by 1"                    
-                    git push origin master
+                    git push origin master --force
                     """                   
                 }
             }
