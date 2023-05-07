@@ -37,6 +37,7 @@ pipeline{
                     // git commit -m "incremented patch version by 1"   
                     withCredentials([usernamePassword(credentialsId: 'gitcred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                     sh""" 
+                    rm -rf sample-java/
                     git clone https://github.com/prasad-deepu/sample-java.git
                     cd sample-java
                     git branch
