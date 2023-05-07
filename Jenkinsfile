@@ -23,9 +23,10 @@ pipeline{
                     fixed = versionArray[0]
                     major = versionArray[1]
                     minor = versionArray[2]
-                    patch = versionArray[3]+1
+                    patch = versionArray[3]
+                    ipatch = patch.toInteger()+1
                     fxsnap = versionArray[4]
-                    def newpom = "${fixed}.${major}${minor}${patch}-${fxsnap}"
+                    def newpom = "${fixed}.${major}.${minor}.${ipatch}-${fxsnap}"
                     println "pomnewversion: ${newpom}"
 
                     // sh"""
