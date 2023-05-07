@@ -28,18 +28,16 @@ pipeline{
                     fxsnap = versionArray[4]
                     def newpom = "${fixed}.${major}.${minor}.${ipatch}-${fxsnap}"
                     println "pomnewversion: ${newpom}"
-                    // git remote add origin git@github.com:prasad-deepu/sample-java.git
-                    sh""" 
-                    git branch new2
-                    (script: "mvn org.codehaus.mojo:versions-maven-plugin:2.15.0:set -DnewVersion=${newpom} -DgenerateBackupPoms=false")
-                    """
-                    withCredentials([usernamePassword(credentialsId: 'gitcred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                    // git remote add origin git@github.com:prasad-deepu/sample-java.git                                        
                     // sh 'git clone https://github.com/myusername/my-repo.git'
                     // git remote set-url origin https://prasad-deepu@github.com/prasad-deepu/sample-java.git 
-                     sh"""
+                    //  sh"""
+                    withCredentials([usernamePassword(credentialsId: 'gitcred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                    sh""" 
+                    git checkout new2
+                    (script: "mvn org.codehaus.mojo:versions-maven-plugin:2.15.0:set -DnewVersion=${newpom} -DgenerateBackupPoms=false")
                     touch .gitignore
                     echo "# Ignore everything\n*\n\n# Except for XML files\n!*.xml" > .gitignore     
-                    git branch new2
                     git add pom.xml
                     git commit -m "incremented patch version by 1"  
                     git branch 
