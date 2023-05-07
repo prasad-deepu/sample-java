@@ -34,7 +34,6 @@ pipeline{
                     // sh 'git clone https://github.com/myusername/my-repo.git'
                     // git remote set-url origin https://prasad-deepu@github.com/prasad-deepu/sample-java.git 
                      sh"""        
-                    git stash            
                     git checkout master
                     git add pom.xml
                     git commit -m "incremented patch version by 1"  
