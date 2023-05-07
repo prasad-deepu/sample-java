@@ -33,7 +33,9 @@ pipeline{
                     withCredentials([usernamePassword(credentialsId: 'gitcred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                     // sh 'git clone https://github.com/myusername/my-repo.git'
                     // git remote set-url origin https://prasad-deepu@github.com/prasad-deepu/sample-java.git 
-                     sh"""        
+                     sh"""    
+                    git add pom.xml
+                    git commit -m "incremented patch version by 1"     
                     git checkout master
                     git add pom.xml
                     git commit -m "incremented patch version by 1"  
