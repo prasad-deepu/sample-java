@@ -20,8 +20,12 @@ pipeline{
                     println "Version: ${version}"
                     def versionArray = version.split("[-|\\.]")
                     println "VersionArray: ${versionArray}"
-                    major = versionArray[0]
-                    def newpom = "${major}"
+                    fixed = versionArray[0]
+                    major = versionArray[1]
+                    minor = versionArray[2]
+                    patch = versionArray[3]+1
+                    fxsnap = versionArray[4]
+                    def newpom = "${fixed}.${major}${minor}${patch}-${fxsnap}"
                     println "pomnewversion: ${newpom}"
 
                     // sh"""
