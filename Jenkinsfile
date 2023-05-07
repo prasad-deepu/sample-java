@@ -32,9 +32,9 @@ pipeline{
                     sh (script: "mvn org.codehaus.mojo:versions-maven-plugin:2.15.0:set -DnewVersion=${newpom} -DgenerateBackupPoms=false")
                     withCredentials([usernamePassword(credentialsId: 'gitcred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                     // sh 'git clone https://github.com/myusername/my-repo.git'
-                     sh"""
-                    git remote set-url origin https://prasad-deepu@github.com/prasad-deepu/sample-java.git 
-                    git checkout -b new4
+                    // git remote set-url origin https://prasad-deepu@github.com/prasad-deepu/sample-java.git 
+                     sh"""                    
+                    git branch master
                     git add pom.xml
                     git commit -m "incremented patch version by 1"  
                     git branch 
