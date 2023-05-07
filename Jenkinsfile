@@ -36,7 +36,7 @@ pipeline{
                     git commit -m "incremented patch version by 1"  
                     git branch 
                     git remote -v                 
-                    git push origin new --force
+                    git push --set-upstream origin master
                     """                   
                 }
             }
