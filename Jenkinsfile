@@ -20,6 +20,10 @@ pipeline{
                     println "Version: ${version}"
                     def versionArray = version.split("[-|\\.]")
                     println "VersionArray: ${versionArray}"
+                    sh"""
+                    newpom = "$versionArray[0].$versionArray[1].$versionArray[2].$versionArray[3]-$versionArray[4]"
+                    echo $newpom
+                    """
                 }
             }
         }
