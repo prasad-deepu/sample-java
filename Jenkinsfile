@@ -40,7 +40,7 @@ pipeline{
                     git commit -m "incremented patch version by 1"  
                     git branch 
                     git remote -v                 
-                    git push "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/sample-java.git" new4
+                    git push "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/sample-java.git" master
                     """    
                         }
                                   
