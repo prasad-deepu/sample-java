@@ -34,12 +34,12 @@ pipeline{
                     // sh 'git clone https://github.com/myusername/my-repo.git'
                      sh"""
                     git remote set-url origin https://prasad-deepu@github.com/prasad-deepu/sample-java.git 
-                    git checkout -b new3
+                    git checkout -b new4
                     git add pom.xml
                     git commit -m "incremented patch version by 1"  
                     git branch 
                     git remote -v                 
-                    git push --set-upstream origin new3
+                    git push "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/sample-java.git" new4
                     """    
                         }
                                   
