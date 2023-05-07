@@ -18,7 +18,7 @@ pipeline{
                     def pom = readMavenPom file: 'pom.xml'
                     def version = pom.version
                     println "Version: ${version}"
-                    def versionArray = version.split("[\\.-+]")
+                    def versionArray = version.split("[\\.-]")
                     println "VersionArray: ${versionArray}"
                 }
             }
