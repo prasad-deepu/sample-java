@@ -31,12 +31,12 @@ pipeline{
                     // git remote add origin git@github.com:prasad-deepu/sample-java.git
                     sh (script: "mvn org.codehaus.mojo:versions-maven-plugin:2.15.0:set -DnewVersion=${newpom} -DgenerateBackupPoms=false")
                     sh"""
-                    git checkout -b new
+                    git branch -b new1
                     git add pom.xml
                     git commit -m "incremented patch version by 1"  
                     git branch 
                     git remote -v                 
-                    git push --set-upstream origin new
+                    git push --set-upstream origin new1
                     """                   
                 }
             }
