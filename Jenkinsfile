@@ -32,8 +32,9 @@ pipeline{
                     sh (script: "mvn org.codehaus.mojo:versions-maven-plugin:2.15.0:set -DnewVersion=${newpom} -DgenerateBackupPoms=false")
                     sh"""
                     git add pom.xml
-                    git commit -m "incremented patch version by 1"                    
-                    git push origin master --force
+                    git commit -m "incremented patch version by 1"   
+                    git remote -v                 
+                    git push -u origin master --force
                     """                   
                 }
             }
