@@ -1,5 +1,8 @@
 pipeline{
     agent any
+     environment {
+        EXAMPLE_CREDS = credentials('gitcred')
+    }
 
     tools {
          maven 'mymvn'
@@ -35,7 +38,7 @@ pipeline{
                     // #touch .gitignore
                     // echo "# Ignore everything\n*\n\n# Except for XML files\n!*.xml" > .gitignore   
                     // git commit -m "incremented patch version by 1"   
-                    withCredentials([usernamePassword(credentialsId: 'gitcred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                    // withCredentials([usernamePassword(credentialsId: 'gitcred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                     sh""" 
                     rm -rf sample-java/
                     git clone https://github.com/prasad-deepu/sample-java.git
@@ -46,9 +49,9 @@ pipeline{
                     git add pom.xml
                     git commit -m "incremented pom version to ${ipatch}"                   
                     git status             
-                    git push 'https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/sample-java.git'
+                    git push 'https://${EXAMPLE_CREDS_USR}:${EXAMPLE_CREDS_PSW}@github.com/${EXAMPLE_CREDS_USR}/sample-java.git'
                     """    
-                        }
+                        // }
                                   
                 }
             }
