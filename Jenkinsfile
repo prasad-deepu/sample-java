@@ -36,7 +36,7 @@ pipeline{
                     git commit -m "incremented patch version by 1"  
                     git branch 
                     git remote -v                 
-                    git push -u origin master --force
+                    git push origin master --force
                     """                   
                 }
             }
