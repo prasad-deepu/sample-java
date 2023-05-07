@@ -24,7 +24,7 @@ pipeline{
                     major = versionArray[1]
                     minor = versionArray[2]
                     patch = versionArray[3]
-                    ipatch = patch.toInteger()+1
+                    ipatch = patch.toInteger()+2
                     fxsnap = versionArray[4]
                     def newpom = "${fixed}.${major}.${minor}.${ipatch}-${fxsnap}"
                     println "pomnewversion: ${newpom}"
@@ -37,12 +37,15 @@ pipeline{
                     // git commit -m "incremented patch version by 1"   
                     withCredentials([usernamePassword(credentialsId: 'gitcred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                     sh""" 
-                    git checkout -b new10
-                    mvn org.codehaus.mojo:versions-maven-plugin:2.15.0:set -DnewVersion="${newpom}" -DgenerateBackupPoms=false
+                    git clone https://github.com/prasad-deepu/sample-java.git
+                    cd sample-java
+                    git branch
+                    mvn org.codehaus.mojo:versions-maven-plugin:2.15.0:set -DnewVersion=R23.5.1.4-SNAPSHOT -DgenerateBackupPoms=false                    
                     git status 
-                    git add pom.xml                    
+                    git add pom.xml
+                    git commit -m "incremented pom version to 4"                   
                     git status             
-                    git push "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/sample-java.git" new10
+                    git push "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/sample-java.git" master
                     """    
                         }
                                   
